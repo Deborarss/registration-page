@@ -1,16 +1,25 @@
 import React from "react";
-import "antd/dist/antd.css";
+import { Provider } from "react-redux";
+import { ConnectedRouter } from "connected-react-router";
 import "sanitize.css/sanitize.css";
-import GlobalStyle from "./global-styles";
-import RegistrationSteps from "./components/RegistrationSteps";
+import history from "./utils/history";
+import configureStore from "./configureStore";
 
-const App = () => {
+// Import root app
+import App from "./containers/App";
+
+// Create redux store with history
+const initialState = {};
+const store = configureStore(initialState, history);
+
+const ConnectApp = () => {
   return (
-    <>
-      <RegistrationSteps />
-      <GlobalStyle />
-    </>
+    <Provider store={store}>
+      <ConnectedRouter history={history}>
+        <App />
+      </ConnectedRouter>
+    </Provider>
   );
 };
 
-export default App;
+export default ConnectApp;

@@ -18,7 +18,7 @@ const steps = [
   },
 ];
 
-const RegistrationSteps = () => {
+const RegisterForm = () => {
   const [currentStep, setCurrentStep] = React.useState(0);
 
   const success = () => {
@@ -63,4 +63,4 @@ const RegistrationSteps = () => {
   );
 };
 
-export default RegistrationSteps;
+export default RegisterForm;
